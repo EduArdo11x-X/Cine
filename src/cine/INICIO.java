@@ -34,11 +34,15 @@ public class INICIO extends javax.swing.JFrame {
         jMenu9 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu11 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,7 +70,7 @@ public class INICIO extends javax.swing.JFrame {
 
         jMenu9.setText("Actor");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("Crear");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -77,9 +81,22 @@ public class INICIO extends javax.swing.JFrame {
         jMenu5.add(jMenu9);
 
         jMenu8.setText("Director");
+
+        jMenuItem2.setText("Crear");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem2);
+
         jMenu5.add(jMenu8);
 
         jMenu1.setText("Opinion");
+
+        jMenuItem3.setText("Crear");
+        jMenu1.add(jMenuItem3);
+
         jMenu5.add(jMenu1);
 
         jMenuBar2.add(jMenu5);
@@ -88,6 +105,15 @@ public class INICIO extends javax.swing.JFrame {
         jMenu6.setText("Registros");
 
         jMenu10.setText("Registro Interpretación");
+
+        jMenuItem4.setText("Crear");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem4);
+
         jMenu6.add(jMenu10);
 
         jMenuBar2.add(jMenu6);
@@ -96,6 +122,15 @@ public class INICIO extends javax.swing.JFrame {
         jMenu7.setText("Servicios");
 
         jMenu11.setText("Pelicula");
+
+        jMenuItem5.setText("Crear");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu11.add(jMenuItem5);
+
         jMenu7.add(jMenu11);
 
         jMenuBar2.add(jMenu7);
@@ -117,8 +152,28 @@ public class INICIO extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        crudActor ingresarCrud = new crudActor();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        crudDirector ingresarCrud = new crudDirector();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        RegistroInterpretacion ingresarCrud = new RegistroInterpretacion();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       crudPelicula ingresarCrud = new crudPelicula();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);  // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +222,10 @@ public class INICIO extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
