@@ -100,7 +100,7 @@ public class Buscar_elinminnar_director extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Eliminar ");
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 0));
+        jButton3.setBackground(new java.awt.Color(0, 0, 153));
         jButton3.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Mostrar todos los registros ");
