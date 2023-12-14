@@ -5,6 +5,14 @@
  */
 package cine;
 
+import Clases.Cine;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author PC01
@@ -17,6 +25,45 @@ public class crudCine extends javax.swing.JFrame {
     public crudCine() {
         initComponents();
     }
+    
+    
+    
+    
+     ConexionPg conectar = new ConexionPg();//Conectamos a la base
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+
+    public List listaTodasPersonas() {
+        List<Cine> listaCines = new ArrayList<>();
+        String sql = "select * from cine";
+        try {
+            con = conectar.getConexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Cine miCine = new Cine();
+                miCine.setId_cine(rs.getInt(1));
+                miCine.setNombre(rs.getString(2));
+                miCine.setDireccion(rs.getString(3));
+                miCine.setTelefono(rs.getString(4));
+                miCine.setId_sala(rs.getInt(5));
+                
+                listaCines.add(miCine);
+
+            }
+            
+
+        } catch (Exception e) {
+            
+        }
+
+        return listaCines;
+    }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +88,9 @@ public class crudCine extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblCine = new javax.swing.JTable();
+        btnActualiza = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,19 +137,67 @@ public class crudCine extends javax.swing.JFrame {
         jButton2.setText("Registrar");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
+        tblCine.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id cine", "Nombre", "Direccion", "Telefono", "Id sala"
+            }
+        ));
+        jScrollPane1.setViewportView(tblCine);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, 418));
+
+        btnActualiza.setText("Actualiza");
+        btnActualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActualiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnActualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizaActionPerformed
+
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+        ///Logica cargar personas
+        modeloTabla = (DefaultTableModel) tblCine.getModel();
+        List<Cine> lista = listaTodasPersonas();
+        Object[] object = new Object[9];
+        for (int i = 0; i < lista.size(); i++) {
+            object[0] = lista.get(i).getId_cine();
+            object[1] = lista.get(i).getNombre();
+            object[2] = lista.get(i).getDireccion();
+            object[3] = lista.get(i).getTelefono();
+            object[4] = lista.get(i).getId_sala();
+           
+            modeloTabla.addRow(object);
+        }
+        tblCine.setModel(modeloTabla);
+
+
+    }//GEN-LAST:event_btnActualizaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +235,7 @@ public class crudCine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualiza;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -146,10 +245,12 @@ public class crudCine extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable tblCine;
     // End of variables declaration//GEN-END:variables
 }
