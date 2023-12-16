@@ -13,37 +13,43 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Patricio
- */
 public class ConexionPg {
-    
 
-    Connection con;
-    
+    private Connection con;
+
     public Connection getConexion() {
-        String cadenaConexion="jdbc:postgresql://192.168.45.228:5432/Personas";
-    String userPG="postgres";
-    String passPG="1234";
+        String cadenaConexion = "jdbc:postgresql://localhost/BDCine";
+        String userPG = "postgres";
+        String passPG = "1234";
 
         try {
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection(cadenaConexion, userPG, passPG);
+            return con;
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+            cerrarConexion(); // Cerrar la conexión en caso de error
+            return null;
+        }
+    }
+
+    public void cerrarConexion() {
+        if (con != null) {
             try {
-                Class.forName("org.postgresql.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ConexionPg.class.getName()).log(Level.SEVERE, null, ex);
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        
-        
-            con=DriverManager.getConnection(cadenaConexion, userPG, passPG);
+        }
+    }
+
+    public SQLException accionBD(String sql) {
+        try (Statement st = con.createStatement()) {
+            st.execute(sql);
+            return null;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionPg.class.getName()).log(Level.SEVERE, null, ex);
+            return ex;
         }
-        return con;
-        
     }
-    
-  
-    
-  
 }
