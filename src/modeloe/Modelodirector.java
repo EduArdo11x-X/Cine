@@ -4,7 +4,7 @@ import Modelo.*;
 import Clases.Cine;
 import Clases.Director;
 //import cine.ConexionPg;
-import conexion.ConexionPg;
+import Conexion.ConexionPg;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,8 +28,7 @@ public class Modelodirector {
 
         try (Connection conexion = new ConexionPg().getConexion();
                 PreparedStatement pst = conexion.prepareStatement(
-                        "INSERT INTO director ( id_director,  titulo_profesion,  dni, nombre,\n" +
-"//            apellido,  edad, direccion, telefono,  celular, nacionalidad) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?)")) {
+                        "INSERT INTO director ( id_director,  titulo_profesion,  dni, nombre, apellido,  edad, direccion, telefono,  celular, nacionalidad) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?)")) {
 
 //            int id_director, String titulo_profesion, int dni, String nombre,
 //            String apellido, String edad, String direccion, String telefono, int celular, String nacionalidad

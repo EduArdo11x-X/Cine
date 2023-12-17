@@ -1,7 +1,7 @@
 package Modelo;
 
 import Clases.Opinion;
-import cine.ConexionPg;
+import Conexion.ConexionPg;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
