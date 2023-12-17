@@ -12,16 +12,16 @@ import java.util.Date;
  * @author PC01
  */
 public class Opinion {
-    
+
     private int id_opinion;
     private String nombre_persona;
     private int edad_persona;
     private Date fecha;
-    private int calificacion;
+    private String calificacion;
     private String comentario;
     private int id_pelicula;
 
-    public Opinion(int id_opinion, String nombre_persona, int edad_persona, Date fecha, int calificacion, String comentario, int id_pelicula) {
+    public Opinion(int id_opinion, String nombre_persona, int edad_persona, Date fecha, String calificacion, String comentario, int id_pelicula) {
         this.id_opinion = id_opinion;
         this.nombre_persona = nombre_persona;
         this.edad_persona = edad_persona;
@@ -66,11 +66,11 @@ public class Opinion {
         this.fecha = fecha;
     }
 
-    public int getCalificacion() {
+    public String getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(int calificacion) {
+    public void setCalificacion(String calificacion) {
         this.calificacion = calificacion;
     }
 
@@ -95,6 +95,4 @@ public class Opinion {
         return "Opinion{" + "id_opinion=" + id_opinion + ", nombre_persona=" + nombre_persona + ", edad_persona=" + edad_persona + ", fecha=" + fecha + ", calificacion=" + calificacion + ", comentario=" + comentario + ", id_pelicula=" + id_pelicula + '}';
     }
 
-   
-    
 }
