@@ -5,6 +5,9 @@
  */
 package cine;
 
+import Clases.Registro_director;
+import interfaces_e.Registo_director;
+
 /**
  *
  * @author jose
@@ -181,15 +184,15 @@ public class INICIO extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        crudActor ingresarCrud = new crudActor();
+        Registo_director ingresarCrud = new Registo_director();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        crudDirector ingresarCrud = new crudDirector();
+         Registo_director ingresarCrud = new Registo_director();
         ingresarCrud.dispose();
-        ingresarCrud.setVisible(true);         // TODO add your handling code here:
+        ingresarCrud.setVisible(true);      // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
