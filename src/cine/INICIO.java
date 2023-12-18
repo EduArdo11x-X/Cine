@@ -348,6 +348,7 @@ public class INICIO extends javax.swing.JFrame {
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         Buscar_elinminnar_director ingresarCrud = new  Buscar_elinminnar_director();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
@@ -355,28 +356,28 @@ public class INICIO extends javax.swing.JFrame {
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
-
+        this.dispose();
         Modificar_director ingresarCrud = new  Modificar_director();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
         Registo_sala ingresarCrud = new  Registo_sala();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
         Buscar_elinminnar_sala ingresarCrud = new  Buscar_elinminnar_sala();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
         Modificar_sala ingresarCrud = new   Modificar_sala();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
