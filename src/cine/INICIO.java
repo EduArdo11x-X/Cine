@@ -7,6 +7,7 @@ package cine;
 
 import Clases.Registro_director;
 import interfaces_e.Registo_director;
+import interfaces_e.Registo_promocion;
 
 /**
  *
@@ -50,6 +51,8 @@ public class INICIO extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        meiRegistrarPromocion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +168,18 @@ public class INICIO extends javax.swing.JFrame {
 
         jMenu7.add(jMenu2);
 
+        jMenu3.setText("Promocion");
+
+        meiRegistrarPromocion.setText("Registrar");
+        meiRegistrarPromocion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meiRegistrarPromocionActionPerformed(evt);
+            }
+        });
+        jMenu3.add(meiRegistrarPromocion);
+
+        jMenu7.add(jMenu3);
+
         jMenuBar2.add(jMenu7);
 
         setJMenuBar(jMenuBar2);
@@ -190,7 +205,7 @@ public class INICIO extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-         Registo_director ingresarCrud = new Registo_director();
+        Registo_director ingresarCrud = new Registo_director();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);      // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -225,6 +240,12 @@ public class INICIO extends javax.swing.JFrame {
         v.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void meiRegistrarPromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meiRegistrarPromocionActionPerformed
+        this.dispose();
+        Registo_promocion v = new Registo_promocion();
+        v.setVisible(true);
+    }//GEN-LAST:event_meiRegistrarPromocionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -232,6 +253,7 @@ public class INICIO extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -246,5 +268,6 @@ public class INICIO extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem meiRegistrarPromocion;
     // End of variables declaration//GEN-END:variables
 }

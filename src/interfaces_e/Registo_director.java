@@ -304,7 +304,7 @@ public class Registo_director extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        registrarDirector();
+        //*registrarDirector();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 //     private int dni;
@@ -318,52 +318,52 @@ public class Registo_director extends javax.swing.JFrame {
 //    private int id_director;
 //    private String titulo_profesion;
     
-      private void registrarDirector() {
-        try {
-            // Verificar que todos los campos estén llenos
-            if (txtid.getText().isEmpty() || txtcedula.getText().isEmpty()
-                    || txtnombre.getText().isEmpty() || txtapellido.getText().isEmpty()|| txtedad.getText().isEmpty()||txtdireccion.getText().isEmpty()
-                    || txtnumtelefono.getText().isEmpty()|| txtcelular.getText().isEmpty()|| txtitulo.getText().isEmpty()
-                    || txtnacionalidad.getSelectedItem() == null) {
-                JOptionPane.showMessageDialog(this, "Ingrese todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;  // Salir del método si algún campo está vacío
-            }
-            
-            int idD = Integer.parseInt(txtid.getText());
-            int Dcedu= Integer.parseInt(txtcedula.getText());
-            String Dnombre = txtnombre.getText();
-            String Dapellido = txtapellido.getText();
-            String Dedad = txtedad.getText();
-            String Ddireccion = txtdireccion.getText();
-            String Dtelef = txtnumtelefono.getText();
-            int  Dcelu = Integer.parseInt(txtcelular.getText());
-            String Dtitu = txtitulo.getText();
-            
-            String Dnacio = txtnacionalidad.getSelectedItem().toString();
-            
-           
-//    public Director(int id_director, String titulo_profesion, int dni, String nombre,
-//            String apellido, String edad, String direccion, String telefono, int celular, String nacionalidad) {
-//        super(dni, nombre, apellido, edad, direccion, telefono, celular, nacionalidad);
-//        this.id_director = id_director;
-////        this.titulo_profesion = titulo_profesion;
+//      private void registrarDirector() {
+//        try {
+//            // Verificar que todos los campos estén llenos
+//            if (txtid.getText().isEmpty() || txtcedula.getText().isEmpty()
+//                    || txtnombre.getText().isEmpty() || txtapellido.getText().isEmpty()|| txtedad.getText().isEmpty()||txtdireccion.getText().isEmpty()
+//                    || txtnumtelefono.getText().isEmpty()|| txtcelular.getText().isEmpty()|| txtitulo.getText().isEmpty()
+//                    || txtnacionalidad.getSelectedItem() == null) {
+//                JOptionPane.showMessageDialog(this, "Ingrese todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+//                return;  // Salir del método si algún campo está vacío
+//            }
+//            
+//            int idD = Integer.parseInt(txtid.getText());
+//            int Dcedu= Integer.parseInt(txtcedula.getText());
+//            String Dnombre = txtnombre.getText();
+//            String Dapellido = txtapellido.getText();
+//            String Dedad = txtedad.getText();
+//            String Ddireccion = txtdireccion.getText();
+//            String Dtelef = txtnumtelefono.getText();
+//            int  Dcelu = Integer.parseInt(txtcelular.getText());
+//            String Dtitu = txtitulo.getText();
+//            
+//            String Dnacio = txtnacionalidad.getSelectedItem().toString();
+//            
+//           
+////    public Director(int id_director, String titulo_profesion, int dni, String nombre,
+////            String apellido, String edad, String direccion, String telefono, int celular, String nacionalidad) {
+////        super(dni, nombre, apellido, edad, direccion, telefono, celular, nacionalidad);
+////        this.id_director = id_director;
+//////        this.titulo_profesion = titulo_profesion;
+////    }
+//            
+//            Director director = new Director(idD, Dtitu, Dcedu, Dnombre,Dapellido,Dedad,Ddireccion,Dtelef,Dcelu,Dnacio);
+//            
+//            boolean resultadoInserccion = Modelodirector.insertarDirector(director);
+//            if (resultadoInserccion) {
+//                JOptionPane.showMessageDialog(this, "Registro creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+////                cargarTabla();
+////                limpiarCampos();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Error al registrar Cine.", "Error", JOptionPane.ERROR_MESSAGE);
+//            }
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "Error en el formato de valores al registrar Cine.", "Error", JOptionPane.ERROR_MESSAGE);
+//            e.printStackTrace();
+//        }
 //    }
-            
-            Director director = new Director(idD, Dtitu, Dcedu, Dnombre,Dapellido,Dedad,Ddireccion,Dtelef,Dcelu,Dnacio);
-            
-            boolean resultadoInserccion = Modelodirector.insertarDirector(director);
-            if (resultadoInserccion) {
-                JOptionPane.showMessageDialog(this, "Registro creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-//                cargarTabla();
-//                limpiarCampos();
-            } else {
-                JOptionPane.showMessageDialog(this, "Error al registrar Cine.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error en el formato de valores al registrar Cine.", "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

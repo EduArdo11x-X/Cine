@@ -10,17 +10,17 @@ package Clases;
  * @author jose
  */
 public class Promocion {
-    
-   private int id_promocion;
-   private String descripcion;
-   private double  descuento;
-   private int  id_cine;
 
-    public Promocion(int id_promocion, String descripcion, double descuento, int id_cine) {
+    private int id_promocion;
+    private String descripcion;
+    private double descuento;
+    private int id_pelicula;
+
+    public Promocion(int id_promocion, String descripcion, double descuento, int id_pelicula) {
         this.id_promocion = id_promocion;
         this.descripcion = descripcion;
         this.descuento = descuento;
-        this.id_cine = id_cine;
+        this.id_pelicula = id_pelicula;
     }
 
     public Promocion() {
@@ -50,19 +50,17 @@ public class Promocion {
         this.descuento = descuento;
     }
 
-    public int getId_cine() {
-        return id_cine;
+    public int getId_pelicula() {
+        return id_pelicula;
     }
 
-    public void setId_cine(int id_cine) {
-        this.id_cine = id_cine;
+    public void setId_pelicula(int id_pelicula) {
+        this.id_pelicula = id_pelicula;
     }
 
     @Override
     public String toString() {
-        return "Promocion{" + "id_promocion=" + id_promocion + ", descripcion=" + descripcion + ", descuento=" + descuento + ", id_cine=" + id_cine + '}';
+        return "Promocion{" + "id_promocion=" + id_promocion + ", descripcion=" + descripcion + ", descuento=" + descuento + ", id_pelicula=" + id_pelicula + '}';
     }
-   
-   
-   
+
 }
