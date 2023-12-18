@@ -21,13 +21,15 @@ import javax.swing.JTextField;
  */
 public class RegistroIDirector extends javax.swing.JFrame {
 
+    public JButton getBtnRegresar() {
+        return btnRegresar;
+    }
+
     public JButton getBtnActualizar() {
         return BtnActualizar;
     }
 
-    public JButton getBtnRegresar() {
-        return BtnRegresar;
-    }
+  
 
     public JButton getBtnAceptar() {
         return btnAceptar;
@@ -114,11 +116,11 @@ public class RegistroIDirector extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         cbBuscarInt = new javax.swing.JComboBox<>();
-        BtnRegresar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         BtnActualizar = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDir = new javax.swing.JTable();
@@ -216,8 +218,6 @@ public class RegistroIDirector extends javax.swing.JFrame {
 
         cbBuscarInt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id pelicula", "Id actor", "Id registro" }));
 
-        BtnRegresar.setText("Regresar");
-
         btnAgregar.setText("Agregar");
 
         btnEditar.setText("Editar");
@@ -233,6 +233,13 @@ public class RegistroIDirector extends javax.swing.JFrame {
         BtnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
             }
         });
 
@@ -254,9 +261,9 @@ public class RegistroIDirector extends javax.swing.JFrame {
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(277, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,11 +272,11 @@ public class RegistroIDirector extends javax.swing.JFrame {
                 .addComponent(cbBuscarInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegresar))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -324,17 +331,23 @@ public class RegistroIDirector extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnActualizarActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        this.dispose();
+        INICIO v = new INICIO();
+        v.setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizar;
-    private javax.swing.JButton BtnRegresar;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cbActor;
     private javax.swing.JComboBox<String> cbBuscarInt;
     private javax.swing.JComboBox<String> cbPelicula;

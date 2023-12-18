@@ -6,6 +6,10 @@
 package cine;
 
 import Clases.Registro_director;
+import Controlador.controladorDir;
+import Controlador.controladorInt;
+import Modelo.modeloDir;
+import Modelo.modeloInt;
 import interfaces_e.Registo_promocion;
 import interfaces_e.Buscar_elinminnar_director;
 import interfaces_e.Buscar_elinminnar_sala;
@@ -48,13 +52,13 @@ public class INICIO extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        meiOpi = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu12 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu13 = new javax.swing.JMenu();
+        menuDirector = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu11 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -135,13 +139,13 @@ public class INICIO extends javax.swing.JFrame {
 
         jMenu1.setText("Opinion");
 
-        jMenuItem8.setText("Ver Opiniones");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        meiOpi.setText("Ver Opiniones");
+        meiOpi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                meiOpiActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem8);
+        jMenu1.add(meiOpi);
 
         jMenuItem3.setText("Registrar");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -170,17 +174,17 @@ public class INICIO extends javax.swing.JFrame {
 
         jMenu6.add(jMenu10);
 
-        jMenu12.setText("Registro Director");
+        jMenu13.setText("Registro Director");
 
-        jMenuItem9.setText("Crear");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        menuDirector.setText("Crear");
+        menuDirector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                menuDirectorActionPerformed(evt);
             }
         });
-        jMenu12.add(jMenuItem9);
+        jMenu13.add(menuDirector);
 
-        jMenu6.add(jMenu12);
+        jMenu6.add(jMenu13);
 
         jMenuBar2.add(jMenu6);
 
@@ -292,9 +296,13 @@ public class INICIO extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        RegistroInterpretacion ingresarCrud = new RegistroInterpretacion();
-        ingresarCrud.dispose();
-        ingresarCrud.setVisible(true);         // TODO add your handling code here:
+        this.dispose();
+        
+        modeloInt modeloint = new modeloInt();
+
+        RegistroInterpretacion vistaint = new RegistroInterpretacion();
+        controladorInt control = new controladorInt(modeloint, vistaint);
+        control.iniciaControl();// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -334,14 +342,16 @@ public class INICIO extends javax.swing.JFrame {
         v.setVisible(true);
     }//GEN-LAST:event_meiVerFuncionesActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void meiOpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meiOpiActionPerformed
         this.dispose();
-        vistaOpiniones v = new vistaOpiniones();
+        vistaOpiniones v =new vistaOpiniones();
         v.setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+
+    }//GEN-LAST:event_meiOpiActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        
+
         this.dispose();
         Registo_director ingresarCrud = new Registo_director();
         ingresarCrud.setVisible(true);      // TODO add your handling code here:
@@ -350,7 +360,7 @@ public class INICIO extends javax.swing.JFrame {
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Buscar_elinminnar_director ingresarCrud = new  Buscar_elinminnar_director();
+        Buscar_elinminnar_director ingresarCrud = new Buscar_elinminnar_director();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
@@ -358,31 +368,41 @@ public class INICIO extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Modificar_director ingresarCrud = new  Modificar_director();
+        Modificar_director ingresarCrud = new Modificar_director();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         this.dispose();
-        Registo_sala ingresarCrud = new  Registo_sala();
+        Registo_sala ingresarCrud = new Registo_sala();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         this.dispose();
-        Buscar_elinminnar_sala ingresarCrud = new  Buscar_elinminnar_sala();
+        Buscar_elinminnar_sala ingresarCrud = new Buscar_elinminnar_sala();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         this.dispose();
-        Modificar_sala ingresarCrud = new   Modificar_sala();
+        Modificar_sala ingresarCrud = new Modificar_sala();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void menuDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDirectorActionPerformed
+       this.dispose();
+       
+        modeloDir modelodir = new modeloDir();
+
+        RegistroIDirector vistadir = new RegistroIDirector();
+        controladorDir control = new controladorDir(modelodir, vistadir);
+        control.iniciaControl();
+    }//GEN-LAST:event_menuDirectorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -390,7 +410,7 @@ public class INICIO extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
-    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -412,10 +432,10 @@ public class INICIO extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem meiOpi;
     private javax.swing.JMenuItem meiRegistrarPromocion;
     private javax.swing.JMenuItem meiVerFunciones;
+    private javax.swing.JMenuItem menuDirector;
     // End of variables declaration//GEN-END:variables
 }

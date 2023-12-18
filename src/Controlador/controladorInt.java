@@ -53,12 +53,13 @@ public class controladorInt {
         vistaInt.getBtnModificar().addActionListener(l -> Actualizar());
         vistaInt.getBtnAceptar().addActionListener(l -> grabarInterpretaciones());
         vistaInt.getBtnCancelar().addActionListener(l -> regresarInicio());
-                vistaInt.getBtnRegresar().addActionListener(l -> regresarInicio());
+                        vistaInt.getBtnRegresar().addActionListener(l -> regresarInicio());
+
 
     }
 
     private void listarRInterpretacion(JTable tabla) {
-limpiarTabla();
+        limpiarTabla();
         ///Logica cargar personas
         modeloTabla = (DefaultTableModel) tabla.getModel();
         List<Registro_interpretacion> lista = modeloint.listaTodasInterpretaciones();
@@ -79,30 +80,30 @@ limpiarTabla();
     private void grabarInterpretaciones() {
         // Lógica para grabar
         // Validar antes...
-        try{
-        String Idregistro = vistaInt.getTxtRegistroInt().getText();
-        Date fechaInicio = Date.valueOf(vistaInt.getTxtFechaInicio().getText());
-        Date fechaFin = Date.valueOf(vistaInt.getTxtFechaFin().getText());
-        String Idactor = vistaInt.getCbActor().getSelectedItem().toString();
-        String Idpelicula = vistaInt.getCbPelicula().getSelectedItem().toString();
+        try {
+            String Idregistro = vistaInt.getTxtRegistroInt().getText();
+            Date fechaInicio = Date.valueOf(vistaInt.getTxtFechaInicio().getText());
+            Date fechaFin = Date.valueOf(vistaInt.getTxtFechaFin().getText());
+            String Idactor = vistaInt.getCbActor().getSelectedItem().toString();
+            String Idpelicula = vistaInt.getCbPelicula().getSelectedItem().toString();
 
-        miRegistroInt.setId_reg_int(Integer.parseInt(Idregistro));
-        miRegistroInt.setFecha_inicio(fechaInicio);
-        miRegistroInt.setFecha_fin(fechaFin);
-        miRegistroInt.setId_actor(Integer.parseInt(Idactor));
-        miRegistroInt.setId_pelicula(Integer.parseInt(Idpelicula));
+            miRegistroInt.setId_reg_int(Integer.parseInt(Idregistro));
+            miRegistroInt.setFecha_inicio(fechaInicio);
+            miRegistroInt.setFecha_fin(fechaFin);
+            miRegistroInt.setId_actor(Integer.parseInt(Idactor));
+            miRegistroInt.setId_pelicula(Integer.parseInt(Idpelicula));
 
-        int r = modeloint.grabarInterpretacion(miRegistroInt);
-        if (r == 1) {
-            vistaInt.getDlgRI().setVisible(false);
-            JOptionPane.showMessageDialog(vistaInt, "Registro Agregado con Exito");
-        } else {
-            JOptionPane.showMessageDialog(vistaInt, "error");
+            int r = modeloint.grabarInterpretacion(miRegistroInt);
+            if (r == 1) {
+                vistaInt.getDlgRI().setVisible(false);
+                JOptionPane.showMessageDialog(vistaInt, "Registro Agregado con Exito");
+            } else {
+                JOptionPane.showMessageDialog(vistaInt, "error");
+
+            }
+        } catch (Exception e) {
 
         }
-        }catch(Exception e){
-                
-                }
 
     }
 

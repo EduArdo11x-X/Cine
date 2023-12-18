@@ -54,7 +54,8 @@ public class controladorDir {
         vistaDir.getBtnModificar().addActionListener(l -> Actualizar());
         vistaDir.getBtnAceptar().addActionListener(l -> grabarInterpretaciones());
         vistaDir.getBtnCancelar().addActionListener(l -> regresarInicio());
-                        vistaDir.getBtnRegresar().addActionListener(l -> regresarInicio());
+                vistaDir.getBtnRegresar().addActionListener(l -> regresarInicio());
+
 
     }
 
