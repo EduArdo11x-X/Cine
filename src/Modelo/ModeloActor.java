@@ -56,28 +56,6 @@ public class ModeloActor {
     }
 
 
-    public static ArrayList<Integer> obtenerCodigosSala() {
-        ArrayList<Integer> codigosSala = new ArrayList<>();
-
-        try (Connection conexion = new ConexionPg().getConexion();
-                PreparedStatement pst = conexion.prepareStatement("SELECT id_actor FROM actor");
-                ResultSet rs = pst.executeQuery()) {
-
-            while (rs.next()) {
-                int id_actor = rs.getInt("id_actor");
-                codigosSala.add(id_actor);
-            }
-
-        } catch (SQLException ex) {
-            // Manejar la excepción de manera adecuada, puedes imprimir el error o lanzar una excepción personalizada
-            ex.printStackTrace();
-        } catch (Exception e) {
-            // Manejar otras excepciones que no sean SQL
-            e.printStackTrace();
-        }
-
-        return codigosSala;
-    }
 
     public static List<Actor> consultarActor() {
         List<Actor> listaCine = new ArrayList<>();
@@ -183,3 +161,4 @@ public static boolean modificarActor(int id_actor, String nuevonombrepersonaje, 
 
 }
 
+ //SDSDSDSDSDSDS

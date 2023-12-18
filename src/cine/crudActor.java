@@ -4,6 +4,7 @@ package cine;
 import Clases.Actor;
 import Conexion.ConexionPg;
 import Modelo.ModeloActor;
+import java.awt.Color;
 
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -78,6 +79,8 @@ public class crudActor extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblActor = new javax.swing.JTable();
+        btnLimpiar = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -205,15 +208,29 @@ public class crudActor extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblActor);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 540, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 670, 270));
+
+        btnLimpiar.setText("Limpiar Campos de texto");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1397, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +251,7 @@ public class crudActor extends javax.swing.JFrame {
     }//GEN-LAST:event_txttelefonoActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        registrarCine();
+        registrarActor();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnActualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizaActionPerformed
@@ -253,6 +270,16 @@ public class crudActor extends javax.swing.JFrame {
     private void tblActorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActorMouseClicked
     filaSeleccionada();        // TODO add your handling code here:
     }//GEN-LAST:event_tblActorMouseClicked
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+limpiarCampos();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        this.dispose();
+        INICIO v = new INICIO();
+        v.setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
    private void cargarTabla() {    
          try {
@@ -292,7 +319,7 @@ public class crudActor extends javax.swing.JFrame {
         }
             
     } 
-    private void registrarCine() {
+    private void registrarActor() {
         try {
             // Verificar que todos los campos estén llenos
             if (txtidactor.getText().isEmpty() || txtnombre.getText().isEmpty()
@@ -320,45 +347,45 @@ public class crudActor extends javax.swing.JFrame {
             
             boolean resultadoInserccion = ModeloActor.insertarActor(actor);
             if (resultadoInserccion) {
-                JOptionPane.showMessageDialog(this, "Registro creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Registro creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 cargarTabla();
                 limpiarCampos();
             } else {
-                JOptionPane.showMessageDialog(this, "Error al registrar actor.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Error al registrar actor.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error en el formato de valores al registrar Cine.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vista, "Error en el formato de valores al registrar Cine.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }
     
     private void eliminarActor() {
         // Obtener la fila seleccionada en la tabla
-        int filaSeleccionada = vista.getTblActor().getSelectedRow();
+        int filaSeleccionada = getTblActor().getSelectedRow();
         
         if (filaSeleccionada != -1) {
             // Obtener el idpersona de la fila seleccionada
-            int id_actor = (Integer) vista.getTblActor().getValueAt(filaSeleccionada, 0);
+            int id_actor = (Integer) getTblActor().getValueAt(filaSeleccionada, 0);
 
             // Lógica para eliminar la persona con el idpersona obtenido
             if (ModeloActor.eliminarActor(id_actor)) {
-                JOptionPane.showMessageDialog(vista, "Actor eliminado satisfactoriamente");
+                JOptionPane.showMessageDialog(this, "Actor eliminado satisfactoriamente");
                 cargarTabla();
             } else {
-                JOptionPane.showMessageDialog(vista, "Error al eliminar el Actor");
+                JOptionPane.showMessageDialog(this, "Error al eliminar el Actor");
             }
         } else {
-            JOptionPane.showMessageDialog(vista, "Seleccione un actor para eliminar");
+            JOptionPane.showMessageDialog(this, "Seleccione un actor para eliminar");
         }
     }
     
     private void modificarActor() {
         // Obtener la fila seleccionada en la tabla
-        int filaSeleccionada = vista.getTblActor().getSelectedRow();
+        int filaSeleccionada = getTblActor().getSelectedRow();
         
         if (filaSeleccionada != -1) {
             // Obtener el idCine de la fila seleccionada
-            int id_actor = (Integer) vista.getTblActor().getValueAt(filaSeleccionada, 0);
+            int id_actor = (Integer) getTblActor().getValueAt(filaSeleccionada, 0);
 
             // Obtener los nuevos valores de los campos de texto
            
@@ -396,70 +423,50 @@ public class crudActor extends javax.swing.JFrame {
         txtnacionalidad.setText("");
         txtidactor.setText("");
         txtnombreper.setText("");
-        
+        txtdni.setEditable(true);
+        txtidactor.setEditable(true);
+        txtdni.setBackground(Color.WHITE);
+        txtidactor.setBackground(Color.WHITE);
     }
     
     private void filaSeleccionada() {
-        int filaSeleccionada = vista.getTblActor().getSelectedRow();
+    int filaSeleccionada = getTblActor().getSelectedRow();
+    
+    if (filaSeleccionada != -1) {
+        int idCine = (Integer) getTblActor().getValueAt(filaSeleccionada, 0);
+
+        // Obtener los detalles del cine seleccionado
+        Actor cine = ModeloActor.obtenerDetallesActor(idCine);
+
+        // Cargar los datos en los campos de texto
+        txtdni.setText(String.valueOf(cine.getDni()));         
+        txtnombre.setText(cine.getNombre());
+        txtapellido.setText(cine.getApellido());
+        txtdireccion.setText(cine.getDireccion());
+        spnedad.setValue(cine.getEdad());
+        txttelefono.setText(cine.getTelefono());
+        txtcelular.setText(String.valueOf(cine.getCelular()));
+        txtnacionalidad.setText(cine.getNacionalidad());
+        txtidactor.setText(String.valueOf(cine.getId_actor()));
+        txtnombreper.setText(cine.getNombre_personaje());
         
-        if (filaSeleccionada != -1) {
-            int idCine = (Integer) vista.getTblActor().getValueAt(filaSeleccionada, 0);
-
-            // Obtener los detalles del cine seleccionado
-            Actor cine = ModeloActor.obtenerDetallesActor(idCine);
-
-            // Cargar los datos en los campos de texto
-            txtdni.setEditable(false);         
-            txtnombre.setText(cine.getNombre());
-            txtapellido.setText(cine.getApellido());
-            txtdireccion.setText(cine.getDireccion());
-            spnedad.setValue(String.valueOf(cine.getEdad()));
-            txttelefono.setText(cine.getTelefono());
-            txtcelular.setText(String.valueOf(cine.getCelular()));
-            txtnacionalidad.setText(cine.getNacionalidad());
-            txtidactor.setText(String.valueOf(cine.getId_actor()));
-            txtnombreper.setText(cine.getNombre_personaje());
-            
-        }
+        //bloquear campos 
+        txtdni.setEditable(false);
+        txtdni.setBackground(Color.CYAN); 
+        txtidactor.setEditable(false);
+        txtidactor.setBackground(Color.CYAN); 
+        
     }
-        public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroInterpretacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroInterpretacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroInterpretacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroInterpretacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new crudActor().setVisible(true);
-            }
-        });
-    }
+}
+  //SDSDSDSDSD
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualiza;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

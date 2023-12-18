@@ -286,7 +286,7 @@ public class INICIO extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Registo_director ingresarCrud = new Registo_director();
+        crudActor ingresarCrud = new crudActor();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -298,6 +298,7 @@ public class INICIO extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        this.dispose();
         crudPelicula ingresarCrud = new crudPelicula();
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);  // TODO add your handling code here:

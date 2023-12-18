@@ -12,75 +12,75 @@ import java.util.Date;
  */
 public class Pelicula {
     
-    private String id_pelicula;
-    private String tituloDistribucion;
-    private String tituloOriginal;
-    private String idiomaOriginal;
-    private String subtitulosEspañol;
-    private int añoProduccion;
+    private int id_pelicula;
+    private String titulodistribucion;
+    private String titulooriginal;
+    private String idiomaoriginal;
+    private String subtitulosespañol;
+    private int añoproduccion;
     private Double duracion;
-    private Date fecha_Estreno;
+    private Date fecha_estreno;
 
-    public Pelicula(String id_pelicula, String tituloDistribucion, String tituloOriginal, String idiomaOriginal, String subtitulosEspañol, int añoProduccion, Double duracion, Date fecha_Estreno) {
+    public Pelicula(int id_pelicula, String titulodistribucion, String titulooriginal, String idiomaoriginal, String subtitulosespañol, int añoproduccion, Double duracion, Date fecha_estreno) {
         this.id_pelicula = id_pelicula;
-        this.tituloDistribucion = tituloDistribucion;
-        this.tituloOriginal = tituloOriginal;
-        this.idiomaOriginal = idiomaOriginal;
-        this.subtitulosEspañol = subtitulosEspañol;
-        this.añoProduccion = añoProduccion;
+        this.titulodistribucion = titulodistribucion;
+        this.titulooriginal = titulooriginal;
+        this.idiomaoriginal = idiomaoriginal;
+        this.subtitulosespañol = subtitulosespañol;
+        this.añoproduccion = añoproduccion;
         this.duracion = duracion;
-        this.fecha_Estreno = fecha_Estreno;
+        this.fecha_estreno = fecha_estreno;
     }
 
     public Pelicula() {
     }
 
-    public String getId_pelicula() {
+    public int getId_pelicula() {
         return id_pelicula;
     }
 
-    public void setId_pelicula(String id_pelicula) {
+    public void setId_pelicula(int id_pelicula) {
         this.id_pelicula = id_pelicula;
     }
 
-    public String getTituloDistribucion() {
-        return tituloDistribucion;
+    public String getTitulodistribucion() {
+        return titulodistribucion;
     }
 
-    public void setTituloDistribucion(String tituloDistribucion) {
-        this.tituloDistribucion = tituloDistribucion;
+    public void setTitulodistribucion(String titulodistribucion) {
+        this.titulodistribucion = titulodistribucion;
     }
 
-    public String getTituloOriginal() {
-        return tituloOriginal;
+    public String getTitulooriginal() {
+        return titulooriginal;
     }
 
-    public void setTituloOriginal(String tituloOriginal) {
-        this.tituloOriginal = tituloOriginal;
+    public void setTitulooriginal(String titulooriginal) {
+        this.titulooriginal = titulooriginal;
     }
 
-    public String getIdiomaOriginal() {
-        return idiomaOriginal;
+    public String getIdiomaoriginal() {
+        return idiomaoriginal;
     }
 
-    public void setIdiomaOriginal(String idiomaOriginal) {
-        this.idiomaOriginal = idiomaOriginal;
+    public void setIdiomaoriginal(String idiomaoriginal) {
+        this.idiomaoriginal = idiomaoriginal;
     }
 
-    public String getSubtitulosEspañol() {
-        return subtitulosEspañol;
+    public String getSubtitulosespañol() {
+        return subtitulosespañol;
     }
 
-    public void setSubtitulosEspañol(String subtitulosEspañol) {
-        this.subtitulosEspañol = subtitulosEspañol;
+    public void setSubtitulosespañol(String subtitulosespañol) {
+        this.subtitulosespañol = subtitulosespañol;
     }
 
-    public int getAñoProduccion() {
-        return añoProduccion;
+    public int getAñoproduccion() {
+        return añoproduccion;
     }
 
-    public void setAñoProduccion(int añoProduccion) {
-        this.añoProduccion = añoProduccion;
+    public void setAñoproduccion(int añoproduccion) {
+        this.añoproduccion = añoproduccion;
     }
 
     public Double getDuracion() {
@@ -91,21 +91,20 @@ public class Pelicula {
         this.duracion = duracion;
     }
 
-    public Date getFecha_Estreno() {
-        return fecha_Estreno;
+    public Date getFecha_estreno() {
+        return fecha_estreno;
     }
 
-    public void setFecha_Estreno(Date fecha_Estreno) {
-        this.fecha_Estreno = fecha_Estreno;
+    public void setFecha_estreno(Date fecha_estreno) {
+        this.fecha_estreno = fecha_estreno;
     }
 
     @Override
     public String toString() {
-        return "Pelicula{" + "id_pelicula=" + id_pelicula + ", tituloDistribucion=" + tituloDistribucion + ", tituloOriginal=" + tituloOriginal + ", idiomaOriginal=" + idiomaOriginal + ", subtitulosEspa\u00f1ol=" + subtitulosEspañol + ", a\u00f1oProduccion=" + añoProduccion + ", duracion=" + duracion + ", fecha_Estreno=" + fecha_Estreno + '}';
+        return "Pelicula{" + "id_pelicula=" + id_pelicula + ", titulodistribucion=" + titulodistribucion + ", titulooriginal=" + titulooriginal + ", idiomaoriginal=" + idiomaoriginal + ", subtitulosespa\u00f1ol=" + subtitulosespañol + ", a\u00f1oproduccion=" + añoproduccion + ", duracion=" + duracion + ", fecha_estreno=" + fecha_estreno + '}';
     }
 
    
-    
     
     
 }
