@@ -14,12 +14,13 @@ public class Director extends Persona {
     private int id_director;
     private String titulo_profesion;
 
-    public Director(int id_director, String titulo_profesion, int dni, String nombre,
-            String apellido, String edad, String direccion, String telefono, int celular, String nacionalidad) {
+    public Director(int id_director, String titulo_profesion, int dni, String nombre, String apellido, int edad, String direccion, String telefono, int celular, String nacionalidad) {
         super(dni, nombre, apellido, edad, direccion, telefono, celular, nacionalidad);
         this.id_director = id_director;
         this.titulo_profesion = titulo_profesion;
     }
+
+   
 
     public Director() {
         super();

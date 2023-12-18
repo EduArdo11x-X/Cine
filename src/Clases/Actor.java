@@ -14,12 +14,14 @@ public class Actor extends Persona{
     private int id_actor;
     private String nombre_personaje;
 
-    public Actor(int id_actor, String nombre_personaje, int dni, String nombre, 
-            String apellido, String edad, String direccion, String telefono, int celular, String nacionalidad) {
+    public Actor(int id_actor, String nombre_personaje, int dni, String nombre, String apellido, int edad, 
+            String direccion, String telefono, int celular, String nacionalidad) {
         super(dni, nombre, apellido, edad, direccion, telefono, celular, nacionalidad);
         this.id_actor = id_actor;
         this.nombre_personaje = nombre_personaje;
     }
+
+    
 
     public Actor() {
         super();
