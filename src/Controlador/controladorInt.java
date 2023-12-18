@@ -53,6 +53,8 @@ public class controladorInt {
         vistaInt.getBtnModificar().addActionListener(l -> Actualizar());
         vistaInt.getBtnAceptar().addActionListener(l -> grabarInterpretaciones());
         vistaInt.getBtnCancelar().addActionListener(l -> regresarInicio());
+                vistaInt.getBtnRegresar().addActionListener(l -> regresarInicio());
+
     }
 
     private void listarRInterpretacion(JTable tabla) {
