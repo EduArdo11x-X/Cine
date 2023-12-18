@@ -24,35 +24,35 @@ public class Modelodirector {
 
     ConexionPg cone = new ConexionPg();
 
-    public static boolean insertarDirector(Director director) {
-
-        try (Connection conexion = new ConexionPg().getConexion();
-                PreparedStatement pst = conexion.prepareStatement(
-                        "INSERT INTO director ( id_director,  titulo_profesion,  dni, nombre, apellido,  edad, direccion, telefono,  celular, nacionalidad) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?)")) {
-
-//            int id_director, String titulo_profesion, int dni, String nombre,
-//            String apellido, String edad, String direccion, String telefono, int celular, String nacionalidad
-            pst.setInt(1, director.getId_director());
-            pst.setString(2, director.getTitulo_profesion());
-            pst.setInt(3, director.getDni());
-            pst.setString(4, director.getNombre());
-            pst.setString(5, director.getApellido());
-            pst.setString(6, director.getEdad());
-            pst.setString(7, director.getDireccion());
-            pst.setString(8, director.getTelefono());
-            pst.setInt(9, director.getCelular());
-            pst.setString(10, director.getNacionalidad());
-            
-            
-
-            int filasInsertadas = pst.executeUpdate();
-
-            return filasInsertadas > 0; // Devolver true si se insertó al menos una fila, o false si no se insertó ninguna fila
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return false; // En caso de error, devolver false
-        }
-    }
+//    public static boolean insertarDirector(Director director) {
+//
+//        try (Connection conexion = new ConexionPg().getConexion();
+//                PreparedStatement pst = conexion.prepareStatement(
+//                        "INSERT INTO director ( id_director,  titulo_profesion,  dni, nombre, apellido,  edad, direccion, telefono,  celular, nacionalidad) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?)")) {
+//
+////            int id_director, String titulo_profesion, int dni, String nombre,
+////            String apellido, String edad, String direccion, String telefono, int celular, String nacionalidad
+//            pst.setInt(1, director.getId_director());
+//            pst.setString(2, director.getTitulo_profesion());
+//            pst.setInt(3, director.getDni());
+//            pst.setString(4, director.getNombre());
+//            pst.setString(5, director.getApellido());
+//            pst.setString(6, director.getEdad());
+//            pst.setString(7, director.getDireccion());
+//            pst.setString(8, director.getTelefono());
+//            pst.setInt(9, director.getCelular());
+//            pst.setString(10, director.getNacionalidad());
+//            
+//            
+//
+//            int filasInsertadas = pst.executeUpdate();
+//
+//            return filasInsertadas > 0; // Devolver true si se insertó al menos una fila, o false si no se insertó ninguna fila
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//            return false; // En caso de error, devolver false
+//        }
+//    }
 
 //    public static ArrayList<Integer> obtenerCodigosSala() {
 //        ArrayList<Integer> codigosSala = new ArrayList<>();
