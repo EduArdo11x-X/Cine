@@ -1,19 +1,23 @@
 package Modelo;
 
+import Clases.Cine;
 import Clases.Funcion;
 import Clases.Opinion;
+import Clases.Promocion;
 import Conexion.ConexionPg;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author IV
- */
-public class ModeloFuncion {
+ */public class ModeloFuncion {
 
     ConexionPg cone = new ConexionPg();
 
@@ -57,4 +61,74 @@ public class ModeloFuncion {
 
         return codigosCine;
     }
+
+    public static ArrayList<Integer> obtenerCodigosFuncion() {
+        ArrayList<Integer> codigosFuncion = new ArrayList<>();
+
+        try (Connection conexion = new ConexionPg().getConexion();
+                PreparedStatement pst = conexion.prepareStatement("SELECT id_funcion FROM funcion");
+                ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                int idFuncion = rs.getInt("id_funcion");
+                codigosFuncion.add(idFuncion);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return codigosFuncion;
+    }
+
+    public static List<Funcion> consultarFuncion() {
+        List<Funcion> listaFuncion = new ArrayList<>();
+
+        try (Connection conexion = new ConexionPg().getConexion();
+                PreparedStatement pst = conexion.prepareStatement("SELECT * FROM funcion");
+                ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                int idFuncion = rs.getInt("id_funcion");
+                Date fechaFuncion = rs.getDate("fecha_funcion");
+                int idCine = rs.getInt("id_cine");
+                int idPelicula = rs.getInt("id_pelicula");
+
+                Funcion funcion = new Funcion(idFuncion, fechaFuncion, idCine, idPelicula);
+                listaFuncion.add(funcion);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return listaFuncion;
+    }
+
+    public static Funcion obtenerDetallesFuncion(int idFuncion) {
+        try (Connection conexion = new ConexionPg().getConexion();
+                PreparedStatement pst = conexion.prepareStatement("SELECT * FROM funcion WHERE id_funcion = ?")) {
+
+            // Establecer el valor del parámetro antes de ejecutar la consulta
+            pst.setInt(1, idFuncion);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    int idFuncionBD = rs.getInt("id_funcion");
+                    Date fechaFuncion = rs.getDate("fecha_funcion");
+                    int idCine = rs.getInt("id_cine");
+                    int idPelicula = rs.getInt("id_pelicula");
+
+                    return new Funcion(idFuncionBD, fechaFuncion, idCine, idPelicula);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al obtener detalles de la función.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return null;
+    }
+
 }

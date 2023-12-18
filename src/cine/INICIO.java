@@ -41,6 +41,7 @@ public class INICIO extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
@@ -50,6 +51,7 @@ public class INICIO extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        meiVerFunciones = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         meiRegistrarPromocion = new javax.swing.JMenuItem();
@@ -104,7 +106,15 @@ public class INICIO extends javax.swing.JFrame {
 
         jMenu1.setText("Opinion");
 
-        jMenuItem3.setText("Crear");
+        jMenuItem8.setText("Ver Opiniones");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem8);
+
+        jMenuItem3.setText("Registrar");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -157,6 +167,14 @@ public class INICIO extends javax.swing.JFrame {
         jMenu7.add(jMenuItem6);
 
         jMenu2.setText("Funcion");
+
+        meiVerFunciones.setText("Ver funciones");
+        meiVerFunciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meiVerFuncionesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(meiVerFunciones);
 
         jMenuItem7.setText("Registrar");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -246,6 +264,18 @@ public class INICIO extends javax.swing.JFrame {
         v.setVisible(true);
     }//GEN-LAST:event_meiRegistrarPromocionActionPerformed
 
+    private void meiVerFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meiVerFuncionesActionPerformed
+        this.dispose();
+        vistaFuncion v = new vistaFuncion();
+        v.setVisible(true);
+    }//GEN-LAST:event_meiVerFuncionesActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        this.dispose();
+        vistaOpiniones v = new vistaOpiniones();
+        v.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -267,7 +297,9 @@ public class INICIO extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem meiRegistrarPromocion;
+    private javax.swing.JMenuItem meiVerFunciones;
     // End of variables declaration//GEN-END:variables
 }

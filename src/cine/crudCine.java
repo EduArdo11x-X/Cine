@@ -13,24 +13,24 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class crudCine extends javax.swing.JFrame {
-    
+
     public crudCine() {
         initComponents();
         this.setLocationRelativeTo(null);
         cargarCodigosSalaComboBox();
         cargarTabla();
     }
-    
+
     ConexionPg conectar = new ConexionPg();//Conectamos a la base
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     private crudCine vista;
-    
+
     public static JTable getTblCine() {
         return tblCine;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -165,9 +165,9 @@ public class crudCine extends javax.swing.JFrame {
     public void cargarCodigosSalaComboBox() {
         try {
             ArrayList<Integer> codigosSala = ModeloCine.obtenerCodigosSala();
-            
+
             cbxIdSala.removeAllItems();
-            
+
             for (Integer idSala : codigosSala) {
                 cbxIdSala.addItem(String.valueOf(idSala));
             }
@@ -177,13 +177,13 @@ public class crudCine extends javax.swing.JFrame {
     }
 
     private void btnActualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizaActionPerformed
-        
+
         cargarTabla();
     }//GEN-LAST:event_btnActualizaActionPerformed
     private void cargarTabla() {
         try {
             List<Cine> listaCine = ModeloCine.consultarCine();
-            
+
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("ID CINE");
             model.addColumn("NOMBRE");
@@ -200,13 +200,13 @@ public class crudCine extends javax.swing.JFrame {
                 model.addRow(fila);
             }
             tblCine.setModel(model);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error en el reporte.", "Error", JOptionPane.ERROR_MESSAGE);
-            
+
         }
-        
+
     }
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         registrarCine();
@@ -238,15 +238,15 @@ public class crudCine extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Ingrese todos los datos antes de registrar un cine.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;  // Salir del método si algún campo está vacío
             }
-            
+
             int idCine = Integer.parseInt(txtIdCine.getText());
             String nombre = txtNombre.getText();
             String direccion = txtDireccion.getText();
             String telefono = txtTelefono.getText();
             int idSala = Integer.parseInt(cbxIdSala.getSelectedItem().toString());
-            
+
             Cine cine = new Cine(idCine, nombre, direccion, telefono, idSala);
-            
+
             boolean resultadoInserccion = ModeloCine.insertarCine(cine);
             if (resultadoInserccion) {
                 JOptionPane.showMessageDialog(this, "Registro creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -260,11 +260,11 @@ public class crudCine extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void eliminarCine() {
         // Obtener la fila seleccionada en la tabla
         int filaSeleccionada = vista.getTblCine().getSelectedRow();
-        
+
         if (filaSeleccionada != -1) {
             // Obtener el idpersona de la fila seleccionada
             int idCine = (Integer) vista.getTblCine().getValueAt(filaSeleccionada, 0);
@@ -280,11 +280,11 @@ public class crudCine extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(vista, "Seleccione un cine para eliminar");
         }
     }
-    
+
     private void modificarCine() {
         // Obtener la fila seleccionada en la tabla
         int filaSeleccionada = vista.getTblCine().getSelectedRow();
-        
+
         if (filaSeleccionada != -1) {
             // Obtener el idCine de la fila seleccionada
             int idCine = (Integer) vista.getTblCine().getValueAt(filaSeleccionada, 0);
@@ -306,7 +306,7 @@ public class crudCine extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(vista, "Seleccione un cine para modificar");
         }
     }
-    
+
     private void limpiarCampos() {
         txtIdCine.setText("");
         txtNombre.setText("");
@@ -314,10 +314,10 @@ public class crudCine extends javax.swing.JFrame {
         txtTelefono.setText("");
         cbxIdSala.setSelectedIndex(0);
     }
-    
+
     private void filaSeleccionada() {
         int filaSeleccionada = vista.getTblCine().getSelectedRow();
-        
+
         if (filaSeleccionada != -1) {
             int idCine = (Integer) vista.getTblCine().getValueAt(filaSeleccionada, 0);
 
