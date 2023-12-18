@@ -11,14 +11,13 @@ public class Persona {
         private int dni;
         private String nombre;
         private String apellido;
-        private String edad;
+        private int edad;
         private String  direccion;
         private String telefono;
         private int celular;
         private String nacionalidad;
 
-    public Persona(int dni, String nombre, String apellido, String edad, String direccion,
-            String telefono, int celular, String nacionalidad) {
+    public Persona(int dni, String nombre, String apellido, int edad, String direccion, String telefono, int celular, String nacionalidad) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -32,8 +31,6 @@ public class Persona {
     public Persona() {
     }
 
-
-    
     public int getDni() {
         return dni;
     }
@@ -58,11 +55,11 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
@@ -98,9 +95,5 @@ public class Persona {
         this.nacionalidad = nacionalidad;
     }
 
-    @Override
-    public String toString() {
-        return "Persona{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", direccion=" + direccion + ", telefono=" + telefono + ", celular=" + celular + ", nacionalidad=" + nacionalidad + '}';
-    }
     
 }
