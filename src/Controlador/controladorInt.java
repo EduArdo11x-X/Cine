@@ -30,19 +30,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class controladorInt {
 
-    private modeloInt modelo;
+    private modeloInt modeloint;
     Registro_interpretacion miRegistroInt = new Registro_interpretacion();
     private RegistroInterpretacion vistaInt;
     DefaultTableModel modeloTabla = new DefaultTableModel();
 
     public controladorInt(modeloInt modelo, RegistroInterpretacion vistaInt) {
-        this.modelo = modelo;
+        this.modeloint = modelo;
         this.vistaInt = vistaInt;
         vistaInt.setVisible(true);
         listarRInterpretacion(vistaInt.getTblInt());
         cargarCodigosPeliculaComboBox();
         cargarCodigosActorComboBox();
-        
+
     }
 
     public void iniciaControl() {
@@ -51,47 +51,46 @@ public class controladorInt {
         vistaInt.getBtnAgregar().addActionListener(l -> abrirDialogo());
         vistaInt.getBtnEditar().addActionListener(l -> abrirDialogoEdicion());
         vistaInt.getBtnModificar().addActionListener(l -> Actualizar());
-        vistaInt.getBtnAceptar().addActionListener(l -> grabarInterpretacion());
+        vistaInt.getBtnAceptar().addActionListener(l -> grabarInterpretaciones());
         vistaInt.getBtnCancelar().addActionListener(l -> regresarInicio());
     }
 
     private void listarRInterpretacion(JTable tabla) {
-        limpiarTabla();
-
+limpiarTabla();
         ///Logica cargar personas
         modeloTabla = (DefaultTableModel) tabla.getModel();
-        List<Registro_interpretacion> lista = modelo.listaTodasInterpretaciones();
-        Object[] object = new Object[9];
+        List<Registro_interpretacion> lista = modeloint.listaTodasInterpretaciones();
+        Object[] object = new Object[5];
         for (int i = 0; i < lista.size(); i++) {
             object[0] = lista.get(i).getId_reg_int();
             object[1] = lista.get(i).getFecha_inicio();
             object[2] = lista.get(i).getFecha_fin();
             object[3] = lista.get(i).getId_actor();
             object[4] = lista.get(i).getId_pelicula();
+            modeloTabla.addRow(object);
 
         }
         vistaInt.getTblInt().setModel(modeloTabla);
 
     }
 
-    private void grabarInterpretacion() {
+    private void grabarInterpretaciones() {
         // Lógica para grabar
         // Validar antes...
+        try{
         String Idregistro = vistaInt.getTxtRegistroInt().getText();
         Date fechaInicio = Date.valueOf(vistaInt.getTxtFechaInicio().getText());
-
         Date fechaFin = Date.valueOf(vistaInt.getTxtFechaFin().getText());
         String Idactor = vistaInt.getCbActor().getSelectedItem().toString();
-
         String Idpelicula = vistaInt.getCbPelicula().getSelectedItem().toString();
 
-        miRegistroInt.setId_reg_int(Integer.getInteger(Idregistro));
+        miRegistroInt.setId_reg_int(Integer.parseInt(Idregistro));
         miRegistroInt.setFecha_inicio(fechaInicio);
         miRegistroInt.setFecha_fin(fechaFin);
-        miRegistroInt.setId_actor(Integer.getInteger(Idactor));
-        miRegistroInt.setId_pelicula(Integer.getInteger(Idpelicula));
+        miRegistroInt.setId_actor(Integer.parseInt(Idactor));
+        miRegistroInt.setId_pelicula(Integer.parseInt(Idpelicula));
 
-        int r = modelo.grabarInterpretacion(miRegistroInt);
+        int r = modeloint.grabarInterpretacion(miRegistroInt);
         if (r == 1) {
             vistaInt.getDlgRI().setVisible(false);
             JOptionPane.showMessageDialog(vistaInt, "Registro Agregado con Exito");
@@ -99,6 +98,9 @@ public class controladorInt {
             JOptionPane.showMessageDialog(vistaInt, "error");
 
         }
+        }catch(Exception e){
+                
+                }
 
     }
 
@@ -108,8 +110,6 @@ public class controladorInt {
         vistaInt.getTxtRegistroInt().setText("");
         vistaInt.getTxtFechaInicio().setText("");
         vistaInt.getTxtFechaFin().setText("");
-        vistaInt.getCbActor().setSelectedItem(0);
-        vistaInt.getCbPelicula().setSelectedItem(0);
 
         vistaInt.getDlgRI().setLocationRelativeTo(vistaInt);
         vistaInt.getDlgRI().setSize(800, 500);
@@ -130,15 +130,15 @@ public class controladorInt {
             vistaInt.getBtnAceptar().setVisible(false);
             vistaInt.getBtnModificar().setVisible(true);
 
-            String idRegistro = (String) vistaInt.getTblInt().getValueAt(fila, 0);
+            Integer idRegistro = (Integer) vistaInt.getTblInt().getValueAt(fila, 0);
             java.sql.Date fechaInicioSql = (java.sql.Date) vistaInt.getTblInt().getValueAt(fila, 1);
             String fechaInicioString = convertirFechaAString(fechaInicioSql);
             java.sql.Date fechaFinSql = (java.sql.Date) vistaInt.getTblInt().getValueAt(fila, 2);
             String fechafFinString = convertirFechaAString(fechaFinSql);
-            String idActor = (String) vistaInt.getTblInt().getValueAt(fila, 3);
-            String idPelicula = (String) vistaInt.getTblInt().getValueAt(fila, 4);
+            Integer idActor = (Integer) vistaInt.getTblInt().getValueAt(fila, 3);
+            Integer idPelicula = (Integer) vistaInt.getTblInt().getValueAt(fila, 4);
 
-            vistaInt.getTxtRegistroInt().setText(idRegistro);
+            vistaInt.getTxtRegistroInt().setText(idRegistro.toString());
             vistaInt.getTxtFechaInicio().setText(fechaInicioString);
             vistaInt.getTxtFechaFin().setText(fechafFinString);
 
@@ -158,22 +158,19 @@ public class controladorInt {
 
     public void Actualizar() {
 
-    String Idregistro = vistaInt.getTxtRegistroInt().getText();
+        String Idregistro = vistaInt.getTxtRegistroInt().getText();
         Date fechaInicio = Date.valueOf(vistaInt.getTxtFechaInicio().getText());
-
         Date fechaFin = Date.valueOf(vistaInt.getTxtFechaFin().getText());
         String Idactor = vistaInt.getCbActor().getSelectedItem().toString();
-
         String Idpelicula = vistaInt.getCbPelicula().getSelectedItem().toString();
 
-        miRegistroInt.setId_reg_int(Integer.getInteger(Idregistro));
+        miRegistroInt.setId_reg_int(Integer.parseInt(Idregistro));
         miRegistroInt.setFecha_inicio(fechaInicio);
         miRegistroInt.setFecha_fin(fechaFin);
-        miRegistroInt.setId_actor(Integer.getInteger(Idactor));
-        miRegistroInt.setId_pelicula(Integer.getInteger(Idpelicula));
+        miRegistroInt.setId_actor(Integer.parseInt(Idactor));
+        miRegistroInt.setId_pelicula(Integer.parseInt(Idpelicula));
 
-
-        int r = modelo.editarRint(miRegistroInt);
+        int r = modeloint.editarRint(miRegistroInt);
         if (r == 1) {
             JOptionPane.showMessageDialog(vistaInt, "Registro Actualizado correctamente");
             vistaInt.getDlgRI().setVisible(false);
@@ -191,9 +188,9 @@ public class controladorInt {
         if (fila == -1) {
             JOptionPane.showMessageDialog(vistaInt, "Seleccione una fila");
         } else {
-            String id = (String) vistaInt.getTblInt().getValueAt(fila, 0);
-            modelo.eliminar(Integer.getInteger(id));
-            JOptionPane.showMessageDialog(vistaInt, "Registro Actualizado correctamente");
+            Integer id = (Integer) vistaInt.getTblInt().getValueAt(fila, 0);
+            modeloint.eliminar(id.toString()); // Convertir a String para el método eliminar que espera un String
+            JOptionPane.showMessageDialog(vistaInt, "Registro Eliminado correctamente");
 
         }
 
@@ -212,7 +209,7 @@ public class controladorInt {
 
     }
 
-        public void cargarCodigosPeliculaComboBox() {
+    public void cargarCodigosPeliculaComboBox() {
         try {
             ArrayList<Integer> codigosPelicula = modeloInt.obtenerCodigosPelicula();
 
@@ -226,14 +223,14 @@ public class controladorInt {
         }
     }
 
-            public void cargarCodigosActorComboBox() {
+    public void cargarCodigosActorComboBox() {
         try {
             ArrayList<Integer> codigosActor = modeloInt.obtenerCodigosActor();
 
             vistaInt.getCbActor().removeAllItems();
 
             for (Integer idPelicula : codigosActor) {
-                 vistaInt.getCbActor().addItem(String.valueOf(idPelicula));
+                vistaInt.getCbActor().addItem(String.valueOf(idPelicula));
             }
         } catch (Exception e) {
             e.printStackTrace();

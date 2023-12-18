@@ -27,7 +27,7 @@ public class modeloInt {
 
     public List listaTodasInterpretaciones() {
         List<Registro_interpretacion> listaInterpretacion = new ArrayList<>();
-        String sql = "select * from BDCine";
+        String sql = "select * from registro_interpretacion";
         try {
             con = conectar.getConexion();
             ps = con.prepareStatement(sql);
@@ -39,6 +39,8 @@ public class modeloInt {
                 miRegistroInt.setFecha_fin(rs.getDate(3));
                 miRegistroInt.setId_actor(rs.getInt(4));
                 miRegistroInt.setId_pelicula(rs.getInt(5));
+                listaInterpretacion.add(miRegistroInt);
+
 
             }
 
@@ -61,6 +63,8 @@ public class modeloInt {
             ps.setDate(3, p.getFecha_fin());
             ps.setInt(4, p.getId_actor());
             ps.setInt(5, p.getId_pelicula());
+                        ps.executeUpdate();
+
 
         } catch (Exception e) {
 
@@ -68,7 +72,7 @@ public class modeloInt {
         return 1;
     }
 
-    public void eliminar(int id) {
+    public void eliminar(String id) {
         String sql = "delete from registro_interpretacion where id_reg_int='" + id + "'";
         try {
             con = conectar.getConexion();
