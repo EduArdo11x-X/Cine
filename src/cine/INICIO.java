@@ -6,8 +6,13 @@
 package cine;
 
 import Clases.Registro_director;
-import interfaces_e.Registo_director;
 import interfaces_e.Registo_promocion;
+import interfaces_e.Buscar_elinminnar_director;
+import interfaces_e.Buscar_elinminnar_sala;
+import interfaces_e.Modificar_director;
+import interfaces_e.Modificar_sala;
+import interfaces_e.Registo_director;
+import interfaces_e.Registo_sala;
 
 /**
  *
@@ -39,13 +44,17 @@ public class INICIO extends javax.swing.JFrame {
         jMenu9 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu12 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu11 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -55,6 +64,10 @@ public class INICIO extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         meiRegistrarPromocion = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,13 +107,29 @@ public class INICIO extends javax.swing.JFrame {
 
         jMenu8.setText("Director");
 
-        jMenuItem2.setText("Crear");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem10.setText("Crear");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu8.add(jMenuItem2);
+        jMenu8.add(jMenuItem10);
+
+        jMenuItem11.setText("buscar y eliminar");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem11);
+
+        jMenuItem12.setText("Modificar");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem12);
 
         jMenu5.add(jMenu8);
 
@@ -140,6 +169,18 @@ public class INICIO extends javax.swing.JFrame {
         jMenu10.add(jMenuItem4);
 
         jMenu6.add(jMenu10);
+
+        jMenu12.setText("Registro Director");
+
+        jMenuItem9.setText("Crear");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem9);
+
+        jMenu6.add(jMenu12);
 
         jMenuBar2.add(jMenu6);
 
@@ -198,6 +239,34 @@ public class INICIO extends javax.swing.JFrame {
 
         jMenu7.add(jMenu3);
 
+        jMenu4.setText("Sala");
+
+        jMenuItem13.setText("Crear");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem13);
+
+        jMenuItem14.setText("Buscar y Eliminar");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem14);
+
+        jMenuItem15.setText("Modificar");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem15);
+
+        jMenu7.add(jMenu4);
+
         jMenuBar2.add(jMenu7);
 
         setJMenuBar(jMenuBar2);
@@ -221,12 +290,6 @@ public class INICIO extends javax.swing.JFrame {
         ingresarCrud.dispose();
         ingresarCrud.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        Registo_director ingresarCrud = new Registo_director();
-        ingresarCrud.dispose();
-        ingresarCrud.setVisible(true);      // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         RegistroInterpretacion ingresarCrud = new RegistroInterpretacion();
@@ -276,14 +339,59 @@ public class INICIO extends javax.swing.JFrame {
         v.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        
+        this.dispose();
+        Registo_director ingresarCrud = new Registo_director();
+        ingresarCrud.setVisible(true);      // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        Buscar_elinminnar_director ingresarCrud = new  Buscar_elinminnar_director();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+
+        Modificar_director ingresarCrud = new  Modificar_director();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+        Registo_sala ingresarCrud = new  Registo_sala();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        Buscar_elinminnar_sala ingresarCrud = new  Buscar_elinminnar_sala();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        // TODO add your handling code here:
+        Modificar_sala ingresarCrud = new   Modificar_sala();
+        ingresarCrud.dispose();
+        ingresarCrud.setVisible(true);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -291,13 +399,19 @@ public class INICIO extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem meiRegistrarPromocion;
     private javax.swing.JMenuItem meiVerFunciones;
